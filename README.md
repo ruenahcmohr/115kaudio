@@ -25,6 +25,40 @@ then the binary can just be cat'd to the port
 
 cat song.bin > /dev/ttyUSB1
 
+
+----------------------
+
+ENCODER:
+
+The schematic is quite simple, the only reason I used a microcontroller was to knock out the start and stop bits for me.
+The input is rebiased at 2.5V, be aware it needs to be pretty hot, like 4Vp-p.
+The input is then low-pass filtered just to be fair to the converter.
+The serial output is low pass filtered and fed back to the compator to try to compensate the audio value for.
+
+![noalt](p1310476.jpg)
+
+-- Build refrence images --
+
+![noalt](p1310480.jpg)
+![noalt](p1310479.jpg)
+![noalt](p1310478.jpg)
+![noalt](p1310477.jpg)
+
+
+FIRMWARE:
+  I have the makefile that I use on my debain linux machines in there, if your sadistic, you might be able to compile it with arduino.
+  
+  I have included the .hex file, cause not all of us are into compiling, and you know what? thats OK.
+
+
+DECODER:
+
+All thats needed to decode the stream is the RC filter that was used on the feedback for the comparator.
+In this case a 2.7k resistor and 0.02uF capacitor. (THATS IT!)
+Be aware that the audio levels comming out of it are pretty hot and might need to be divided down a bit. (to like 25%)
+
+
+
 GEEK OUT!
 
 
